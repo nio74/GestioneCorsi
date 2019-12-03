@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="it.nio74.GestioneCorsiController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nio74.GestioneCorsiController">
    <center>
       <TextArea id="txtResult" BorderPane.alignment="CENTER" />
    </center>
@@ -24,17 +23,17 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField id="txtPeriodo">
+                  <TextField id="txtPeriodo" fx:id="txtPeriodo">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button id="btnCercaCorsi" mnemonicParsing="false" onAction="#doCercaCorsi" text="Cerca Corsi">
+                  <Button id="btnCercaCorsi" fx:id="btnCercaCorsi" mnemonicParsing="false" onAction="#doCercaCorsi" text="Cerca Corsi">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button id="btnSattCorsi" mnemonicParsing="false" onAction="#doCalcolaStatCorsi" text="Statistiche Corsi" />
+                  <Button id="btnSattCorsi" fx:id="btnSattCorsi" mnemonicParsing="false" onAction="#doCalcolaStatCorsi" text="Statistiche Corsi" />
                </children>
             </HBox>
             <HBox />
