@@ -1,11 +1,15 @@
 package it.nio74.Model;
 
+import java.util.List;
+
+
+
 public class GestoreCorsi {
-	
-	private int codins;
-	private int crediti;
-	private String nome;
-	
+
+	public List<Corso> getCorsiPeriodo(int periodo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

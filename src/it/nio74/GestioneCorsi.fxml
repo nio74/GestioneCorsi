@@ -11,7 +11,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.nio74.GestioneCorsiController">
    <center>
-      <TextArea id="txtResult" BorderPane.alignment="CENTER" />
+      <TextArea id="txtResult" fx:id="txtResult" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <VBox BorderPane.alignment="CENTER">

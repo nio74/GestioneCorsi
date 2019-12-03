@@ -5,12 +5,14 @@
 package it.nio74;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.nio74.Model.GestoreCorsi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class GestioneCorsiController {
@@ -22,6 +24,9 @@ public class GestioneCorsiController {
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    
+    @FXML // fx:id="txtResult"
+    private TextArea txtResult; // Value injected by FXMLLoader
 
     @FXML // fx:id="txtPeriodo"
     private TextField txtPeriodo; // Value injected by FXMLLoader
@@ -39,8 +44,24 @@ public class GestioneCorsiController {
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
+    	int periodo;
+    	
+    	try {
+    		 periodo = Integer.parseInt(txtPeriodo.getText());
+    	}catch(NumberFormatException e) {
+    		txtResult.appendText("Devi inserire un periodo (1 o 2)");
+    	}
+    	
+    	if(periodo != 1 && periodo != 2) {
+    		
+    		txtResult.appendText("Devi inserire un periodo (1 o 2)");
+    		return;
+    	}
+    	
+    	List<Corso> corsi = this.model.getCorsiPeriodo(periodo);
 
     }
+    
     
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
