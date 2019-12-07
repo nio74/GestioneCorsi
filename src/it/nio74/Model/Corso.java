@@ -2,11 +2,12 @@ package it.nio74.Model;
 
 public class Corso {
 	
+	private String codins;
 	private int crediti;
 	private String nome;
 	private int pd;
 	
-	public Corso(int codins, int crediti, String nome, int pd) {
+	public Corso(String codins, int crediti, String nome, int pd) {
 		super();
 		this.codins = codins;
 		this.crediti = crediti;
@@ -14,11 +15,11 @@ public class Corso {
 		this.pd = pd;
 	}
 	
-	private int codins;
-	public int getCodins() {
+	
+	public String getCodins() {
 		return codins;
 	}
-	public void setCodins(int codins) {
+	public void setCodins(String codins) {
 		this.codins = codins;
 	}
 	public int getCrediti() {
@@ -44,14 +45,20 @@ public class Corso {
 	public String toString() {
 		return String.format("Corso [codins=%s, crediti=%s, nome=%s, pd=%s]", codins, crediti, nome, pd);
 	}
-	
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + codins;
+		result = prime * result + ((codins == null) ? 0 : codins.hashCode());
+		result = prime * result + crediti;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + pd;
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -61,10 +68,24 @@ public class Corso {
 		if (getClass() != obj.getClass())
 			return false;
 		Corso other = (Corso) obj;
-		if (codins != other.codins)
+		if (codins == null) {
+			if (other.codins != null)
+				return false;
+		} else if (!codins.equals(other.codins))
+			return false;
+		if (crediti != other.crediti)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (pd != other.pd)
 			return false;
 		return true;
 	}
+	
+	
 	
 
 	

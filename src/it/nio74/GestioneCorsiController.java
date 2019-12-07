@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import it.nio74.Model.Corso;
 import it.nio74.Model.GestoreCorsi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,12 +45,14 @@ public class GestioneCorsiController {
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
+    	
     	int periodo;
     	
     	try {
     		 periodo = Integer.parseInt(txtPeriodo.getText());
     	}catch(NumberFormatException e) {
     		txtResult.appendText("Devi inserire un periodo (1 o 2)");
+    		return;
     	}
     	
     	if(periodo != 1 && periodo != 2) {
@@ -59,6 +62,11 @@ public class GestioneCorsiController {
     	}
     	
     	List<Corso> corsi = this.model.getCorsiPeriodo(periodo);
+    	
+    	for(Corso c : corsi) {
+    		
+    		txtResult.appendText(c.toString() + "\n");
+    	}
 
     }
     
@@ -66,6 +74,7 @@ public class GestioneCorsiController {
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+    	assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'GestioneCorsi.fxml'.";
         assert txtPeriodo != null : "fx:id=\"txtPeriodo\" was not injected: check your FXML file 'GestioneCorsi.fxml'.";
         assert btnCercaCorsi != null : "fx:id=\"btnCercaCorsi\" was not injected: check your FXML file 'GestioneCorsi.fxml'.";
         assert btnSattCorsi != null : "fx:id=\"btnSattCorsi\" was not injected: check your FXML file 'GestioneCorsi.fxml'.";
